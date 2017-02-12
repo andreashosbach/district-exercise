@@ -1,4 +1,9 @@
-ass
+# Eclipse editor
+.classpath
+.project
+.settings/
+
+*.class
 
 # Log file
 *.log
