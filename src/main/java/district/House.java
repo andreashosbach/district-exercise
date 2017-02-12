@@ -33,7 +33,7 @@ public class House {
 	}
 
 	public int calculateFloorCount() {
-		double floorCount = height / FLOOR_HEIGHT;
+		double floorCount = (double) height / FLOOR_HEIGHT;
 		if (RoofType.FLAT.equals(roof)) {
 			floorCount += 0.5;
 		}
