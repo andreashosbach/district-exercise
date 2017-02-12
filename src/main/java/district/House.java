@@ -5,7 +5,7 @@ public class House {
 	private final static int FLOOR_HEIGHT = 3;
 
 	private int number;
-	private int height;
+	private double height;
 	private RoofType roof = RoofType.FLAT;
 
 	public int getNumber() {
@@ -16,11 +16,11 @@ public class House {
 		this.number = number;
 	}
 
-	public int getHeight() {
+	public double getHeight() {
 		return height;
 	}
 
-	public void setHeight(int height) {
+	public void setHeight(double height) {
 		this.height = height;
 	}
 
@@ -33,7 +33,7 @@ public class House {
 	}
 
 	public int calculateFloorCount() {
-		double floorCount = (double) height / FLOOR_HEIGHT;
+		double floorCount = height / FLOOR_HEIGHT;
 		if (RoofType.FLAT.equals(roof)) {
 			floorCount += 0.5;
 		}

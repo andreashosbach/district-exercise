@@ -46,7 +46,7 @@ public class Immo {
 		System.out.println("Please enter number:");
 		newHouse.setNumber(Integer.parseInt(input.nextLine()));
 		System.out.println("Please enter height:");
-		newHouse.setHeight(Integer.parseInt(input.nextLine()));
+		newHouse.setHeight(Double.parseDouble(input.nextLine()));
 		System.out.println("Please enter roof type");
 		for (int i = 0; i < RoofType.values().length; i++) {
 			System.out.println(i + ": " + RoofType.values()[i].getDescription());
