@@ -1,22 +1,14 @@
 package district;
 
-import java.io.InputStream;
 import java.util.Scanner;
 
 public class Immo {
 
-	private Street myStreet = new Street();
-	private Scanner input;
+	private static Scanner input = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		new Immo(System.in).run();
-	}
+		Street myStreet = new Street();
 
-	public Immo(InputStream input) {
-		this.input = new Scanner(input);
-	}
-
-	private void run() {
 		while (true) {
 			System.out.println("1: New House");
 			System.out.println("2: Find House");
@@ -24,10 +16,10 @@ public class Immo {
 
 			switch (input.nextLine()) {
 			case "1":
-				newHouse();
+				newHouse(myStreet);
 				break;
 			case "2":
-				findHouse();
+				findHouse(myStreet);
 				break;
 			case "3":
 				return;
@@ -37,19 +29,18 @@ public class Immo {
 		}
 	}
 
-	private void findHouse() {
+	private static void findHouse(Street street) {
 		System.out.println("Enter number: ");
 		int number = Integer.parseInt(input.nextLine());
-		House house = myStreet.searchHouseByNumber(number);
+		House house = street.searchHouseByNumber(number);
 		if (house == null) {
 			System.out.println("Not found");
 		} else {
 			System.out.println("Found: " + house);
 		}
-
 	}
 
-	private void newHouse() {
+	private static void newHouse(Street street) {
 		House newHouse = new House();
 
 		System.out.println("Please enter number:");
@@ -63,6 +54,6 @@ public class Immo {
 		int roofSelection = Integer.parseInt(input.nextLine());
 		newHouse.setRoof(RoofType.values()[roofSelection]);
 
-		myStreet.addHouse(newHouse);
+		street.addHouse(newHouse);
 	}
 }
