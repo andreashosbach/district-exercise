@@ -2,9 +2,11 @@ package district;
 
 public class House {
 
-	int number;
-	int height;
-	RoofType roof;
+	private final static int FLOOR_HEIGHT = 3;
+
+	private int number;
+	private int height;
+	private RoofType roof = RoofType.FLAT;
 
 	public int getNumber() {
 		return number;
@@ -30,16 +32,25 @@ public class House {
 		this.roof = roof;
 	}
 
+	public int calculateFloorCount() {
+		double floorCount = height / FLOOR_HEIGHT;
+		if (RoofType.FLAT.equals(roof)) {
+			floorCount += 0.5;
+		}
+		return (int) floorCount;
+	}
+
 	public HouseType houseType() {
+		int floorCount = calculateFloorCount();
 		switch (roof) {
 		case FLAT:
-			if (height < 5) {
+			if (floorCount < 2) {
 				return HouseType.BUNGALOW;
-			} else if (height > 60) {
+			} else if (floorCount > 10) {
 				return HouseType.SKYSCRAPER;
 			}
 		case STEEP:
-			if (height < 15) {
+			if (floorCount < 4) {
 				return HouseType.SUBURBAN;
 			}
 		default:
@@ -49,7 +60,7 @@ public class House {
 
 	@Override
 	public String toString() {
-		return "House No " + number + " has " + height + " stories and a " + roof.getDescription() + " roof is a "
-				+ houseType() + " type of House";
+		return "House No " + number + " has " + height / FLOOR_HEIGHT + " floors and a " + roof.getDescription()
+				+ " roof is a " + houseType() + " type of House";
 	}
 }
