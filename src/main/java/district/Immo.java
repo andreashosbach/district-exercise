@@ -1,14 +1,19 @@
 package district;
 
+import java.io.InputStream;
 import java.util.Scanner;
 
 public class Immo {
 
 	private Street myStreet = new Street();
-	private Scanner input = new Scanner(System.in);
+	private Scanner input;
 
 	public static void main(String[] args) {
-		new Immo().run();
+		new Immo(System.in).run();
+	}
+
+	public Immo(InputStream input) {
+		this.input = new Scanner(input);
 	}
 
 	private void run() {
