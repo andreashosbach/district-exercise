@@ -30,7 +30,7 @@ public class ImmoTest {
 		immo.run();
 		out.flush();
 
-		assertThat(outContent.toString(), is("1: New House\n2: Find House\n3: Exit\n"));
+		assertThat(outContent.toString(), is(String.format("1: New House%n2: Find House%n3: Exit%n")));
 	}
 
 	@Test
@@ -41,7 +41,7 @@ public class ImmoTest {
 		immo.run();
 		out.flush();
 
-		assertThat(outContent.toString(), containsString("Input invalid\n"));
+		assertThat(outContent.toString(), containsString(String.format("Input invalid%n")));
 	}
 
 	@Test
@@ -53,7 +53,7 @@ public class ImmoTest {
 
 		out.flush();
 		assertThat(outContent.toString(),
-				containsString("Please enter height:\nPlease enter roof type\n0: flat\n1: steep\n"));
+				containsString(String.format("Please enter height:%nPlease enter roof type%n0: flat%n1: steep%n")));
 	}
 
 	@Test
@@ -64,7 +64,7 @@ public class ImmoTest {
 		immo.run();
 
 		out.flush();
-		assertThat(outContent.toString(), containsString("Enter number: \nFound: "));
+		assertThat(outContent.toString(), containsString(String.format("Enter number: %nFound: ")));
 	}
 
 	@Test
@@ -75,6 +75,6 @@ public class ImmoTest {
 		immo.run();
 
 		out.flush();
-		assertThat(outContent.toString(), containsString("Enter number: \nNot found\n"));
+		assertThat(outContent.toString(), containsString(String.format("Enter number: %nNot found%n")));
 	}
 }
